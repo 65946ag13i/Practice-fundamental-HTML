@@ -22,9 +22,9 @@
       font-size: $font-size-large;
       font-weight: bold;
       transition: color 0.3s ease;
-    }
-    &:hover {
-      color: $primary-color;
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 
