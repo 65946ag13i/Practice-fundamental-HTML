@@ -1,0 +1,84 @@
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $dark-color;
+  background-color: $light-color;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-xlarge;
+
+  @include media-breakpoint-up(md) {
+    padding: 0 $spacing-xlarge;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+}
+
+.mt-1 {
+  margin-top: $spacing-small;
+}
+.mt-2 {
+  margin-top: $spacing-medium;
+}
+.mt-3 {
+  margin-top: $spacing-large;
+}
+.mt-4 {
+  margin-top: $spacing-xlarge;
+}
+
+.p-1 {
+  padding: $spacing-small;
+}
+.p-2 {
+  padding: $spacing-medium;
+}
+.p-3 {
+  padding: $spacing-large;
+}
+.p-4 {
+  padding: $spacing-xlarge;
+}
+.d-flex {
+  display: flex;
+}
+
+.gap-1 {
+  gap: $spacing-small;
+}
+.gap-2 {
+  gap: $spacing-medium;
+}
+.gap-3 {
+  gap: $spacing-large;
+}
+.gap-4 {
+  gap: $spacing-xlarge;
+}
+
+.text-white {
+  color: white;
+}

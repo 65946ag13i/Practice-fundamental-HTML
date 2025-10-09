@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "sass:math";
+@use "./variables.scss" as *;
+@use "sass:color";
+// 計算函數
+@function calculate-rem($size, $base: $font-size-base) {
+  @return math.div($size, $base) * 1rem;
+}
+
+// 顏色調整函數
+@function tint($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
+}
+
+// 斷點獲取函數
+@function breakpoint($size) {
+  @return map.get($breakpoints, $size);
+}
