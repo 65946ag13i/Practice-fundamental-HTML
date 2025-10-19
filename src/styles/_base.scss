@@ -50,6 +50,10 @@ body {
   margin-top: $spacing-xlarge;
 }
 
+.mg-xauto {
+  margin: auto;
+}
+
 .p-1 {
   padding: $spacing-small;
 }
@@ -64,6 +68,12 @@ body {
 }
 .d-flex {
   display: flex;
+}
+
+.flex-xcenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .gap-1 {
@@ -81,4 +91,22 @@ body {
 
 .text-white {
   color: white;
+}
+
+.bg-color-gray {
+  background-color: gray;
+}
+
+.main-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.w-full {
+  width: 100%;
 }

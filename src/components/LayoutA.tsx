@@ -19,11 +19,11 @@ export default function LayoutA() {
       </header>
 
       {/* 子路由會在這裡渲染 */}
-      <body>
+      <div className="main-center">
         <Outlet />
-      </body>
+      </div>
 
-      <h2 className="text-center ">頁尾</h2>
+      <div className="text-center bg-color-gray p-3">頁尾</div>
     </div>
   );
 }

@@ -4,9 +4,15 @@
 @use "./base.scss" as *;
 @use "sass:math";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .app {
   min-height: 100vh;
-  padding: $spacing-xlarge 0;
+  // padding: $spacing-xlarge 0;
 }
 
 .header {

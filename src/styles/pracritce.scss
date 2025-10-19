@@ -1,0 +1,287 @@
+@use "./variables" as *;
+@use "./base" as *;
+@use "sass:map";
+//map
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+@mixin media-breakpoints-up($name) {
+  @if map.has-key($breakpoints, $name) {
+    $min: map.get($breakpoints, $name);
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @error "未知斷點:#{$name}";
+  }
+}
+
+.flex-xcenter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: $spacing-small;
+  @include media-breakpoints-up(sm) {
+    margin: $spacing-small 0;
+  }
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-ycenter {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.boderbox-init {
+  padding: 0;
+  margin: 0;
+}
+
+.flex-center {
+  @extend .flex-xcenter;
+  justify-content: center;
+}
+
+.flex-4col {
+  @extend .flex-xcenter;
+  margin-top: 1rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  & > * {
+    flex: 1 1 45%;
+    @extend .flex-center;
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    font-size: larger;
+  }
+  @include media-breakpoints-up(sm) {
+    & > * {
+      flex: 1 1 25%;
+    }
+  }
+}
+
+.grid-4col {
+  display: grid;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: $spacing-small;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(20%, 1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  & > * {
+    grid-column: span 1;
+    grid-row: span 1;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid black;
+    text-align: center;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin: $spacing-small;
+    font-size: larger;
+    @include media-breakpoints-up(sm) {
+      margin: $spacing-small 0;
+    }
+  }
+}
+
+.grid-fix {
+  display: grid;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: $spacing-small;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  @include media-breakpoints-up(sm) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  & > * {
+    grid-column: span 1;
+    grid-row: span 1;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid black;
+    text-align: center;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin: $spacing-small;
+    font-size: larger;
+  }
+  & > :nth-child(9) {
+    grid-column: span 2;
+  }
+  @include media-breakpoints-up(sm) {
+    & > :nth-child(9) {
+      grid-column: span 1;
+    }
+  }
+}
+
+.section-init {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 80%;
+  margin: $spacing-unit 0;
+  @include media-breakpoints-up(sm) {
+    width: 50%;
+  }
+  @include media-breakpoints-up(lg) {
+    width: 30%;
+  }
+}
+
+.btn-init {
+  border: $border-width * 2 solid transparent;
+  border-radius: 10px;
+  padding: 6px 20px;
+  margin: 0.5rem 0;
+  font-size: larger;
+  color: white;
+  background-color: $primary-color;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.btn-init:active {
+  transform: translateY(2px);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.btn-init:hover {
+  background-color: hsl(211, 100%, 55%);
+  animation: pulse 0.6s ease-in-out;
+}
+
+.table-init {
+  border-collapse: collapse;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  width: 100%;
+  margin: $spacing-medium 0;
+  caption {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-medium;
+  }
+  td,
+  th {
+    border: 2px solid black;
+    padding: $spacing-small;
+  }
+  th {
+    color: black;
+    font-weight: 600;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+ol.roman {
+  list-style-type: lower-roman;
+}
+ol.inside {
+  list-style-position: inside;
+}
+
+.custom-ol {
+  list-style: none;
+  counter-reset: my-counter;
+  padding-left: 20px;
+  li {
+    counter-increment: my-counter;
+    position: relative;
+    padding-left: 25px;
+  }
+  li::before {
+    content: counter(my-counter) ")";
+    color: red;
+    position: absolute;
+    left: 0;
+  }
+}
+
+h1,
+h2 {
+  @extend .boderbox-init;
+}
+
+@each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+  .wp-#{$percentage} {
+    width: $percentage * 1%;
+  }
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+.relative {
+  position: relative;
+}
+
+.crop {
+  position: absolute;
+
+  border: 3px solid $warning-color;
+  border-radius: 3px;
+  div {
+    width: 8px;
+    height: 8px;
+    background-color: #dc3545;
+    position: absolute;
+    cursor: all-scroll;
+  }
+}
+
+.ab-lt {
+  top: 0;
+  left: 0;
+}
+.ab-rt {
+  top: 0;
+  right: 0;
+}
+.ab-lb {
+  bottom: 0;
+  left: 0;
+}
+.ab-rb {
+  bottom: 0;
+  right: 0;
+}
+
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$light-color: #f8f9fa;
+$dark-color: #343a40;

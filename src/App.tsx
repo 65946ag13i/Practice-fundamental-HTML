@@ -1,9 +1,9 @@
+import "normalize.css";
 import "./styles/main.scss";
-
 import LayoutA from "./components/LayoutA";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import Practice from "./components/practice";
+import Practice from "./components/Practice";
 function App() {
   return (
     <BrowserRouter>
