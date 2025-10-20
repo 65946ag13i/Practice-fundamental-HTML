@@ -107,6 +107,7 @@ export default function Practice() {
   };
   return (
     <div className="section-init">
+      <h2>圖片裁切</h2>
       <section className="flex-xcenter  flex-col ">
         <h1 className="text-left w-full">Flex box</h1>
         <div className="flex-4col">

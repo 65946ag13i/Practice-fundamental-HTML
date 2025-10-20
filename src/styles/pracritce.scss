@@ -252,6 +252,7 @@ img {
 
   border: 3px solid $warning-color;
   border-radius: 3px;
+  user-select: none;
   div {
     width: 8px;
     height: 8px;
