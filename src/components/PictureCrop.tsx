@@ -9,12 +9,6 @@ export default function PictureCrop() {
       const bounding = imgRef.current.getBoundingClientRect();
       setWidth(bounding.width.toFixed(0));
       setHeight(bounding.height.toFixed(0));
-      console.log(bounding.x);
-      console.log(bounding.y);
-      //   setpreviewX(0);
-      //   setpreviewY(0);
-      //   setPreviewWidth(bounding.width);
-      //   setPreviewHeight(bounding.height);
 
       setPreBox({ x: 0, y: 0, w: bounding.width, h: bounding.height });
     }
@@ -28,10 +22,6 @@ export default function PictureCrop() {
     };
   }, []);
 
-  //   const [previewX, setpreviewX] = useState(0);
-  //   const [previewY, setpreviewY] = useState(0);
-  //   const [previewWidth, setPreviewWidth] = useState(0);
-  //   const [previewHeight, setPreviewHeight] = useState(0);
   interface mouseCoordinate {
     w: number;
     h: number;
@@ -45,7 +35,7 @@ export default function PictureCrop() {
     h: 0,
   });
 
-  const preview = useRef<HTMLCanvasElement>(null);
+  const previewCanvus = useRef<HTMLCanvasElement>(null);
 
   type Corner = "lt" | "rt" | "lb" | "rb" | null;
   const [moveStart, setMoveStart] = useState<Corner>(null);
@@ -185,13 +175,38 @@ export default function PictureCrop() {
     };
   }, [moveStart]);
 
-  // const cursorprevent = (e: React.DragEvent<HTMLDivElement>) => {
-  //   if (e.target instanceof HTMLElement && e.target.closest(".crop")) {
-  //     console.log("123");
-  //     e.preventDefault();
-  //     console.log("123");
-  //   }
-  // };
+  useEffect(() => {
+    const drawPreview = (canvas: HTMLCanvasElement, img: HTMLImageElement) => {
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      canvas.width = preBox.w;
+      canvas.height = preBox.h;
+      const bounding = img.getBoundingClientRect();
+      const scaleX = img.naturalWidth / bounding.width;
+      const scaleY = img.naturalHeight / bounding.height;
+
+      const srcX = preBox.x * scaleX;
+      const srcY = preBox.y * scaleY;
+      const srcW = preBox.w * scaleX;
+      const srcH = preBox.h * scaleY;
+
+      ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, preBox.w, preBox.h);
+    };
+
+    const img = imgRef.current;
+    const canvas = previewCanvus.current;
+    if (!img || !canvas) return;
+
+    if (img.complete) {
+      drawPreview(canvas, img);
+    } else {
+      img.onload = () => {
+        if (previewCanvus.current && imgRef.current) {
+          drawPreview(previewCanvus.current, imgRef.current);
+        }
+      };
+    }
+  }, [preBox]);
 
   return (
     <div>
@@ -238,8 +253,8 @@ export default function PictureCrop() {
       </h3>
 
       <div>
-        <div>預覽圖</div>
-        <canvas ref={preview}></canvas>
+        <h2>預覽圖</h2>
+        <canvas ref={previewCanvus}></canvas>
       </div>
     </div>
   );

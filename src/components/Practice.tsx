@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "../styles/pracritce.scss";
 import PictureCrop from "./PictureCrop";
+import ReactReducer from "./ReactReducer";
 export default function Practice() {
   const flexarr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const data = [
@@ -107,7 +108,6 @@ export default function Practice() {
   };
   return (
     <div className="section-init">
-      <h2>圖片裁切</h2>
       <section className="flex-xcenter  flex-col ">
         <h1 className="text-left w-full">Flex box</h1>
         <div className="flex-4col">
@@ -330,6 +330,7 @@ export default function Practice() {
       </section>
 
       <PictureCrop />
+      <ReactReducer />
     </div>
   );
 }
