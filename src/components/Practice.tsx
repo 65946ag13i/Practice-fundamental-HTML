@@ -3,6 +3,7 @@ import PictureCrop from "./PictureCrop";
 import ReactReducer from "./ReactReducer";
 import WindowMethod from "./WindowMethod";
 import SelectElement from "./SelectElement";
+import LazyLoding from "./LazyLoding";
 export default function Practice() {
   const flexarr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const data = [
@@ -158,6 +159,8 @@ export default function Practice() {
           {used} GB / {total} GB
         </p>
       </section>
+
+      <LazyLoding />
     </div>
   );
 }
