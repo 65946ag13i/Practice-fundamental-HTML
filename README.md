@@ -16,7 +16,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # 前言
 
+因為前一個項目練習了 tailwind css 不熟悉原生 css 寫法額外寫了這個項目
+
 這個項目主要練習原生 css 、 sass 及 windows method
+
 但是認識這些功能前用了 AI 建立基本的範例，但功能不太好，自己有再調整
 
 ---
