@@ -32,8 +32,8 @@ export default function LayoutA() {
           {/* 純切換組件 */}
 
           <nav className="nav">
-            {pathname === "/" && <Link to="/practice">Practice</Link>}
-            {pathname !== "/" && <Link to="/">homepage</Link>}
+            {pathname === "/" && <Link to="/AIExample">AIExample</Link>}
+            {pathname !== "/" && <Link to="/">Practice</Link>}
           </nav>
         </div>
       </header>

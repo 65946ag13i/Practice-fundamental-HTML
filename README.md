@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# 網頁啟動
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 前言
+
+這個項目主要練習原生 css 、 sass 及 windows method
+但是認識這些功能前用了 AI 建立基本的範例，但功能不太好，自己有再調整
+
+---
+
+# 頁面說明
+
+## [首頁](http://localhost:3000/)
+
+1. 練習 React router
+2. Flex box 、 Grid box 練習
+3. 理解 aninate 和 transition 在按鈕上的應用
+4. 理解 HTML 元素，如 table 、order List、detail、select ...等
+5. windows method 的方法使用
+6. IntersectionObserver API 功能理解
+
+---
+
+## [AI 範例](http://localhost:3000/AIExample)
+
+1. 主要理解 CSS 在頁面的顯示
+2. 了解 sass 以下功能
+
+   1. css 的嵌套功能
+   2. $建立參數
+   3. sass Map
+
+      ```css
+      $theme-colors: (
+        primary: $primary-color,
+        secondary: $secondary-color,
+        success: $success-color,
+        danger: $danger-color,
+        warning: $warning-color,
+      );
+
+      /* 基本用法 */
+      @each $name, $color in $theme-colors {
+        .text-# {$name} {
+          color: $color;
+        }
+      }
+      /*
+      一些基本方法
+      map-has-key : 查找擁有key
+      map-keys    : 列出所有keys
+      map-values  : 列出所有values
+      map-merge   : 合併兩個map
+      */
+      ```
+
+   4. @function
+
+      ```css
+      @function calculate-rem($size, $base: $font-size-base) {
+        @return math.div($size, $base) * 1rem;
+      }
+      ```
+
+   5. @if 條件判斷、 @for 迴圈套用
+
+      ```css
+      @if $spacing-large >15px {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      @for $i from 1 through 5 {
+        .col-# {$i} {
+          flex: 0 0 math.percentage(math.div($i, 5));
+        }
+      }
+
+      @each $size in $sizes {
+      }
+      ```
+
+   6. @mixin 、 @coneten 、 @include
+
+      ```css
+      @mixin example {
+        @media (max-width: 123px) {
+          @content;
+        }
+      }
+
+      .box {
+        width: 1px;
+        @include example {
+          /* 這裡的樣式會被插入到@conent */
+          width: 100%;
+        }
+      }
+      ```

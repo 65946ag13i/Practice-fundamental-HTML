@@ -50,7 +50,7 @@ export default function Practice() {
       </section>
 
       <section className="flex-xcenter  flex-col ">
-        <h1 className="text-left w-full">table html</h1>
+        <h1 className="text-left w-full">Table html</h1>
         <div className="mg-xauto text-center w-full">
           <table className="table-init">
             <caption>簡易table</caption>
@@ -128,7 +128,7 @@ export default function Practice() {
       <SelectElement />
 
       <section className="flex-xcenter  flex-col ">
-        <h1 className="text-left w-full">optgroup element</h1>
+        <h1 className="text-left w-full">Optgroup element</h1>
         <optgroup label="水果">
           <option>芒果</option>
           <option>西瓜</option>
@@ -136,7 +136,7 @@ export default function Practice() {
       </section>
 
       <section className="flex-xcenter  flex-col ">
-        <h1 className="text-left w-full">details element</h1>
+        <h1 className="text-left w-full">Details element</h1>
         <details>
           <summary>點擊這裡查看詳情</summary>
           <p>這是隱藏的內容，點擊 summary 才會顯示。</p>
@@ -144,7 +144,7 @@ export default function Practice() {
       </section>
 
       <section className="flex-xcenter  flex-col ">
-        <h1 className="text-left w-full">meter element</h1>
+        <h1 className="text-left w-full">Meter element</h1>
         <label className="text-sm font-medium">磁碟使用量</label>
         <meter
           value={used}

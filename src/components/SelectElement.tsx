@@ -5,7 +5,7 @@ export default function SelectElement() {
   return (
     <div>
       <section className="flex-xcenter  flex-col ">
-        <h1 className="text-left w-full">select element</h1>
+        <h1 className="text-left w-full">Select element</h1>
         <select value={selected} onChange={(e) => setSelected(e.target.value)}>
           <option value="">請選擇</option>
           <option value="蘋果">蘋果</option>
